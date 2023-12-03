@@ -13,5 +13,6 @@
 - залоггировать работу можно с помощью утилиты script
 
 Подготовим временный том для / раздела:
-[root@otus-task4 ~]# **pvcreate /dev/sdb**
+
+[root@otus-task4 ~]# **pvcreate /dev/sdb**\
   Physical volume "/dev/sdb" successfully created.

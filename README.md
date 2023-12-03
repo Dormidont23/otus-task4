@@ -150,5 +150,5 @@ total size is 255,916,346  speedup is 1,780.60
 Правим fstab для автоматического монтирования /var:\
 [root@otus-task4 boot]# echo "`blkid | grep var: | awk '{print $2}'` /var ext4 defaults 0 0" >> /etc/fstab
 
-###Выделить том под /var###
+### Выделить том под /var ###
 После чего можно успешно перезагружаться в новый (уменьшенный root) и удалять временную Volume Group:\

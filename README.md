@@ -14,8 +14,8 @@
 
 Подготовим временный том для корневого раздела /:\
 [root@otus-task4 ~]# **pvcreate /dev/sdb**\
-  Physical volume "/dev/sdb" successfully created.\
+&emsp;Physical volume "/dev/sdb" successfully created.\
 [root@otus-task4 ~]# **vgcreate vg_root /dev/sdb**\
-  Volume group "vg_root" successfully created\
+&emsp;Volume group "vg_root" successfully created\
 [root@otus-task4 ~]# **lvcreate -n lv_root -l +100%FREE /dev/vg_root**\
-  Logical volume "lv_root" created.
+&emsp;Logical volume "lv_root" created.

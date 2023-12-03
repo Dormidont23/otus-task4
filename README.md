@@ -48,7 +48,7 @@ done
 Обновим образ initrd.\
 [root@otus-task4 boot]# cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; s/.img//g"` --force; done
 
-Ну и для того, чтобы при загрузке был смонтирован нужный root нужно в файле /etc/default/grub заменить rd.lvm.lv=VolGroup00/LogVol00 на rd.lvm.lv=vg_root/lv_root и выполнить grub2-mkconfig -o /boot/grub2/grub.cfg\
+Ну и для того, чтобы при загрузке был смонтирован нужный root нужно в файле **/etc/default/grub** заменить rd.lvm.lv=VolGroup00/LogVol00 на rd.lvm.lv=vg_root/lv_root и выполнить grub2-mkconfig -o /boot/grub2/grub.cfg\
 Перезагружаемсā успешно с новым рут томом. Убедиться в этом можно посмотрев вывод lsblk:\
 [root@otus-task4 ~]# lsblk\
 NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT\
@@ -73,4 +73,82 @@ WARNING: xfs signature detected on /dev/VolGroup00/LogVol00 at offset 0. Wipe it
   Wiping xfs signature on /dev/VolGroup00/LogVol00.\
   Logical volume "LogVol00" created.
 
-  
+Проделываем на нем те же операции, что и в первый раз:\
+[root@otus-task4 ~]# mkfs.xfs /dev/VolGroup00/LogVol00
+meta-data=/dev/VolGroup00/LogVol00 isize=512    agcount=4, agsize=524288 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2097152, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@otus-task4 ~]# mount /dev/VolGroup00/LogVol00 /mnt
+
+Так же как в первый раз переконфигурируем grub, за исключением правки /etc/default/grub.\
+[root@otus-task4 ~]# for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done\
+[root@otus-task4 ~]# chroot /mnt/\
+[root@otus-task4 /]# grub2-mkconfig -o /boot/grub2/grub.cfg\
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
+done\
+cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; s/.img//g"` --force; done
+
+Пока не перезагружаемся и не выходим из под chroot - мы можем заодно перенести /var\
+На свободных дисках создаем зеркало:\
+[root@otus-task4 boot]# pvcreate /dev/sdc /dev/sdd
+  Physical volume "/dev/sdc" successfully created.
+  Physical volume "/dev/sdd" successfully created.
+[root@otus-task4 boot]# vgcreate vg_var /dev/sdc /dev/sdd
+  Volume group "vg_var" successfully created
+[root@otus-task4 boot]# lvcreate -L 950M -m1 -n lv_var vg_var
+  Rounding up size to full physical extent 952.00 MiB
+  Logical volume "lv_var" created.
+
+  Создаем на нем ФС и перемещаем туда /var:\
+  [root@otus-task4 boot]# mkfs.ext4 /dev/vg_var/lv_var
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+60928 inodes, 243712 blocks
+12185 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=249561088
+8 block groups
+32768 blocks per group, 32768 fragments per group
+7616 inodes per group
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+[root@otus-task4 boot]# mount /dev/vg_var/lv_var /mnt
+[root@otus-task4 boot]# cp -aR /var/* /mnt/
+[root@otus-task4 boot]# rsync -avHPSAX /var/ /mnt/
+sending incremental file list
+./
+.updated
+            163 100%    0.00kB/s    0:00:00 (xfr#1, ir-chk=1025/1027)
+
+sent 143,116 bytes  received 609 bytes  287,450.00 bytes/sec
+total size is 255,916,346  speedup is 1,780.60
+
+На всякий случай сохраняем содержимое старого var (или же можно его просто удалить):\
+[root@otus-task4 boot]# mkdir /tmp/oldvar && mv /var/* /tmp/oldvar\
+Ну и монтируем новый var в каталог /var:\
+[root@otus-task4 boot]# umount /mnt\
+[root@otus-task4 boot]# mount /dev/vg_var/lv_var /var
+
+Правим fstab для автоматического монтирования /var:\
+[root@otus-task4 boot]# echo "`blkid | grep var: | awk '{print $2}'` /var ext4 defaults 0 0" >> /etc/fstab
+
+###Выделить том под /var###
+После чего можно успешно перезагружаться в новый (уменьшенный root) и удалять временную Volume Group:\

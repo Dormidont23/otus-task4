@@ -89,7 +89,7 @@ Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img\
 done
 
 Обновить образ initrd.\
-[root@otus-task4 boot]# **cd /boot ; for i in /`ls initramfs-*img/`; do dracut -v $i /`echo $i|sed "s/initramfs-//g; s/.img//g"/` --force; done**
+[root@otus-task4 boot]# **cd /boot ; for i in \`ls initramfs-*img\`; do dracut -v $i \`echo $i|sed "s/initramfs-//g; s/.img//g"\` --force; done**
 
 Ну и для того, чтобы при загрузке был смонтирован нужный root нужно в файле **/etc/default/grub** заменить **rd.lvm.lv=VolGroup00/LogVol00** на **rd.lvm.lv=vg_root/lv_root** и выполнить **grub2-mkconfig -o /boot/grub2/grub.cfg**\
 Перезагружаемся успешно с новым рут томом. Убедиться в этом можно посмотрев вывод lsblk:\

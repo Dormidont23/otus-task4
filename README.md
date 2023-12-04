@@ -191,7 +191,22 @@ Generating grub configuration file ...\
 Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64\
 Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img\
 done\
-[root@otus-task4 boot]# **cd /boot ; for i in \`ls initramfs-\*img\`; do dracut -v $i \`echo $i|sed "s/initramfs-//g; s/.img//g"\` --force; done**
+[root@otus-task4 boot]# **cd /boot ; for i in \`ls initramfs-\*img\`; do dracut -v $i \`echo $i|sed "s/initramfs-//g; s/.img//g"\` --force; done**\
+*** Installing kernel module dependencies and firmware ***\
+*** Installing kernel module dependencies and firmware done ***\
+*** Resolving executable dependencies ***\
+*** Resolving executable dependencies done ***\
+*** Hardlinking files ***\
+*** Hardlinking files done ***\
+*** Stripping files ***\
+*** Stripping files done ***\
+*** Generating early-microcode cpio image contents ***\
+*** Constructing AuthenticAMD.bin ****\
+*** No early-microcode cpio image needed ***\
+*** Store current command line parameters ***\
+*** Creating image file ***\
+*** Creating image file done ***\
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
 
 Пока не перезагружаемся и не выходим из-под chroot - мы можем заодно перенести /var
 #### Выделить том под /var в зеркало ####

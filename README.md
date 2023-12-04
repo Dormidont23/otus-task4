@@ -269,5 +269,5 @@ total size is 255,916,346  speedup is 1,780.60
 **vgremove /dev/vg_root**\
 **pvremove /dev/sdb**
 
-#### Выделить том под /home ####
+### Выделить том под /home ###
 **lvcreate -n LogVol_Home -L 2G /dev/VolGroup00**

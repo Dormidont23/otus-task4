@@ -32,8 +32,7 @@ naming   =version 2              bsize=4096   ascii-ci=0 ftype=1\
 log      =internal log           bsize=4096   blocks=2560, version=2\
          =                       sectsz=512   sunit=0 blks, lazy-count=1\
 realtime =none                   extsz=4096   blocks=0, rtextents=0\
-**mount /dev/vg_root/lv_root /mnt**
-
+[root@otus-task4 ~]# **mount /dev/vg_root/lv_root /mnt**\
 Копировать все данные с / раздела в /mnt:\
 [root@otus-task4 ~]# **xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt**\
 xfsdump: using file dump (drive_simple) strategy\

@@ -69,7 +69,7 @@ sde                       8:64   0    1G  0 disk
 [root@otus-task4 ~]# **lvremove /dev/VolGroup00/LogVol00**\
 Do you really want to remove active logical volume VolGroup00/LogVol00? [y/n]: y\
   Logical volume "LogVol00" successfully removed\
-[root@otus-task4 ~]# lvcreate -n VolGroup00/LogVol00 -L 8G /dev/VolGroup00\
+[root@otus-task4 ~]# **lvcreate -n VolGroup00/LogVol00 -L 8G /dev/VolGroup00**\
 WARNING: xfs signature detected on /dev/VolGroup00/LogVol00 at offset 0. Wipe it? [y/n]: y\
   Wiping xfs signature on /dev/VolGroup00/LogVol00.\
   Logical volume "LogVol00" created.
@@ -97,7 +97,8 @@ Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img\
 done\
 [root@otus-task4 boot]# **cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; s/.img//g"` --force; done**
 
-Пока не перезагружаемся и не выходим из-под chroot - мы можем заодно перенести /var\
+Пока не перезагружаемся и не выходим из-под chroot - мы можем заодно перенести /var
+#### Выделить том под /var в зеркало ####
 На свободных дисках создаем зеркало:\
 [root@otus-task4 boot]# **pvcreate /dev/sdc /dev/sdd**\
   Physical volume "/dev/sdc" successfully created.\

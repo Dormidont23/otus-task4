@@ -35,7 +35,49 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0\
 **mount /dev/vg_root/lv_root /mnt**
 
 Копировать все данные с / раздела в /mnt:\
-[root@otus-task4 ~]# **xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt**
+[root@otus-task4 ~]# **xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt**\
+xfsdump: using file dump (drive_simple) strategy\
+xfsdump: version 3.1.7 (dump format 3.0)\
+xfsrestore: using file dump (drive_simple) strategy\
+xfsrestore: version 3.1.7 (dump format 3.0)\
+xfsdump: level 0 dump of otus-task4:/\
+xfsdump: dump date: Mon Dec  4 06:32:50 2023\
+xfsdump: session id: 2ce7bdd3-35e1-4bab-b136-1e9f776ec918\
+xfsdump: session label: ""\
+xfsdump: ino map phase 1: constructing initial dump list\
+xfsrestore: searching media for dump\
+xfsdump: ino map phase 2: skipping (no pruning necessary)\
+xfsdump: ino map phase 3: skipping (only one dump stream)\
+xfsdump: ino map construction complete\
+xfsdump: estimated dump size: 881017024 bytes\
+xfsdump: creating dump session media file 0 (media 0, file 0)\
+xfsdump: dumping ino map\
+xfsdump: dumping directories\
+xfsrestore: examining media file 0\
+xfsrestore: dump description:\
+xfsrestore: hostname: otus-task4\
+xfsrestore: mount point: /\
+xfsrestore: volume: /dev/mapper/VolGroup00-LogVol00\
+xfsrestore: session time: Mon Dec  4 06:32:50 2023\
+xfsrestore: level: 0\
+xfsrestore: session label: ""\
+xfsrestore: media label: ""\
+xfsrestore: file system id: b60e9498-0baa-4d9f-90aa-069048217fee\
+xfsrestore: session id: 2ce7bdd3-35e1-4bab-b136-1e9f776ec918\
+xfsrestore: media id: b0e6ca4b-ab8e-4d06-b3d6-3f75d20d0a39\
+xfsrestore: searching media for directory dump\
+xfsrestore: reading directories\
+xfsdump: dumping non-directory files\
+xfsrestore: 2697 directories and 23603 entries processed\
+xfsrestore: directory post-processing\
+xfsrestore: restoring non-directory files\
+xfsdump: ending media file\
+xfsdump: media file size 858121032 bytes\
+xfsdump: dump size (non-dir files) : 844967608 bytes\
+xfsdump: dump complete: 27 seconds elapsed\
+xfsdump: Dump Status: SUCCESS\
+xfsrestore: restore complete: 27 seconds elapsed\
+xfsrestore: Restore Status: SUCCESS
 
 Затем переконфигурируем grub для того, чтобы при старте перейти в новый /. Сымитируем текущий root - сделаем в него chroot и обновим grub:\
 [root@otus-task4 ~]# **for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done**\

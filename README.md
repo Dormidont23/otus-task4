@@ -138,7 +138,50 @@ naming   =version 2              bsize=4096   ascii-ci=0 ftype=1\
 log      =internal log           bsize=4096   blocks=2560, version=2\
          =                       sectsz=512   sunit=0 blks, lazy-count=1\
 realtime =none                   extsz=4096   blocks=0, rtextents=0\
-[root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol00 /mnt**
+[root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol00 /mnt**\
+[root@otus-task4 ~]# **xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt**\
+xfsdump: using file dump (drive_simple) strategy\
+xfsrestore: using file dump (drive_simple) strategy\
+xfsdump: version 3.1.7 (dump format 3.0)\
+xfsrestore: version 3.1.7 (dump format 3.0)\
+xfsdump: level 0 dump of otus-task4:/\
+xfsdump: dump date: Mon Dec  4 07:24:27 2023\
+xfsdump: session id: c9767a08-a563-4297-b43d-556b35b95bb9\
+xfsdump: session label: ""\
+xfsdump: ino map phase 1: constructing initial dump list\
+xfsrestore: searching media for dump\
+xfsdump: ino map phase 2: skipping (no pruning necessary)\
+xfsdump: ino map phase 3: skipping (only one dump stream)\
+xfsdump: ino map construction complete\
+xfsdump: estimated dump size: 934619840 bytes\
+xfsdump: creating dump session media file 0 (media 0, file 0)\
+xfsdump: dumping ino map\
+xfsdump: dumping directories\
+xfsrestore: examining media file 0\
+xfsrestore: dump description:\
+xfsrestore: hostname: otus-task4\
+xfsrestore: mount point: /\
+xfsrestore: volume: /dev/mapper/vg_root-lv_root\
+xfsrestore: session time: Mon Dec  4 07:24:27 2023\
+xfsrestore: level: 0\
+xfsrestore: session label: ""\
+xfsrestore: media label: ""\
+xfsrestore: file system id: df503f2c-e5ee-4ee5-aab4-272e5331fce3\
+xfsrestore: session id: c9767a08-a563-4297-b43d-556b35b95bb9\
+xfsrestore: media id: cc2fc868-34b0-40ad-9b4f-684d13199c36\
+xfsrestore: searching media for directory dump\
+xfsrestore: reading directories\
+xfsdump: dumping non-directory files\
+xfsrestore: 3125 directories and 26982 entries processed\
+xfsrestore: directory post-processing\
+xfsrestore: restoring non-directory files\
+xfsdump: ending media file\
+xfsdump: media file size 906734080 bytes\
+xfsdump: dump size (non-dir files) : 891533400 bytes\
+xfsdump: dump complete: 33 seconds elapsed\
+xfsdump: Dump Status: SUCCESS\
+xfsrestore: restore complete: 33 seconds elapsed\
+xfsrestore: Restore Status: SUCCESS
 
 Так же как в первый раз переконфигурируем grub, за исключением правки /etc/default/grub.\
 [root@otus-task4 ~]# **for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done**\

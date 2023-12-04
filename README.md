@@ -89,7 +89,18 @@ Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img\
 done
 
 Обновить образ initrd.\
-[root@otus-task4 boot]# **cd /boot ; for i in \`ls initramfs-\*img\`; do dracut -v $i \`echo $i|sed "s/initramfs-//g; s/.img//g"\` --force; done**
+[root@otus-task4 boot]# **cd /boot ; for i in \`ls initramfs-\*img\`; do dracut -v $i \`echo $i|sed "s/initramfs-//g; s/.img//g"\` --force; done**\
+...\
+*** Hardlinking files done ***\
+*** Stripping files ***\
+*** Stripping files done ***\
+*** Generating early-microcode cpio image contents ***\
+*** Constructing AuthenticAMD.bin ****\
+*** No early-microcode cpio image needed ***\
+*** Store current command line parameters ***\
+*** Creating image file ***\
+*** Creating image file done ***\
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
 
 Ну и для того, чтобы при загрузке был смонтирован нужный root нужно в файле **/etc/default/grub** заменить **rd.lvm.lv=VolGroup00/LogVol00** на **rd.lvm.lv=vg_root/lv_root** и выполнить **grub2-mkconfig -o /boot/grub2/grub.cfg**\
 Перезагружаемся успешно с новым рут томом. Убедиться в этом можно посмотрев вывод lsblk:\

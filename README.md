@@ -267,9 +267,12 @@ total size is 255,916,346  speedup is 1,780.60
 [root@otus-task4 boot]# **echo "\`blkid | grep var: | awk '{print $2}'\` /var ext4 defaults 0 0" >> /etc/fstab**
 
 После чего можно успешно перезагружаться в новый (уменьшенный root) и удалять временную Volume Group:\
-**lvremove /dev/vg_root/lv_root**\
-**vgremove /dev/vg_root**\
-**pvremove /dev/sdb**
-
+[root@otus-task4 boot]# **lvremove /dev/vg_root/lv_root**\
+Do you really want to remove active logical volume vg_root/lv_root? [y/n]: y\
+  Logical volume "lv_root" successfully removed\
+[root@otus-task4 boot]# **vgremove /dev/vg_root**\
+  Volume group "vg_root" successfully removed\
+[root@otus-task4 boot]# **pvremove /dev/sdb**\
+  Labels on physical volume "/dev/sdb" successfully wiped.
 ### Выделить том под /home ###
 **lvcreate -n LogVol_Home -L 2G /dev/VolGroup00**

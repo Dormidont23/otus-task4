@@ -266,5 +266,6 @@ Do you really want to remove active logical volume vg_root/lv_root? [y/n]: y\
 [root@otus-task4 ~]# **pvremove /dev/sdb**\
   Labels on physical volume "/dev/sdb" successfully wiped.
 ### Выделить том под /home ###
+Выделяем том под /home аналогично тому, как делали для /var:\
 **lvcreate -n LogVol_Home -L 2G /dev/VolGroup00**
 ### /home - сделать том для снапшотов ###

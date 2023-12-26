@@ -291,7 +291,9 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 [root@otus-task4 ~]# **echo "\`blkid | grep Home | awk '{print $2}'\` /home xfs defaults 0 0" >> /etc/fstab**
 ### Работа со снапшотами ###
 Сгенерируем файлы в /home/:\
-[root@otus-task4 ~]# **touch /home/file{1..20}**\
+[root@otus-task4 ~]# **touch /home/file{1..20}**
+
+Проверим, что успешно создались:\
 [root@otus-task4 ~]# **ll /home/**
 ```
 total 0
@@ -323,7 +325,9 @@ drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
   Logical volume "home_snap" created.
 
 Удалить часть файлов:\
-[root@otus-task4 ~]# **rm -f /home/file{11..20}**\
+[root@otus-task4 ~]# **rm -f /home/file{11..20}**
+
+Убедимся, что удалились:\
 [root@otus-task4 ~]# **ll /home/**
 ```
 total 0
@@ -339,11 +343,14 @@ total 0
 -rw-r--r--. 1 root    root     0 Dec  7 18:56 file9
 drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```
-[root@otus-task4 ~]# **umount /home/**
-[root@otus-task4 ~]# **lvconvert --merge /dev/VolGroup00/home_snap**
-  Merging of volume VolGroup00/home_snap started.
-  VolGroup00/LogVol_Home: Merged: 100.00%
+Восстановление со снапшота:\
+[root@otus-task4 ~]# **umount /home/**\
+[root@otus-task4 ~]# **lvconvert --merge /dev/VolGroup00/home_snap**\
+  Merging of volume VolGroup00/home_snap started.\
+  VolGroup00/LogVol_Home: Merged: 100.00%\
 [root@otus-task4 ~]# **mount /home/**
+
+Убедимся, что восстановились:\
 [root@otus-task4 ~]# **ll /home/**
 ```
 total 0

@@ -288,5 +288,5 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 [root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol_Home /home**
 
 Правим fstab для автоматического монтирования /home:\
-[root@otus-task4 ~]# **echo "`blkid | grep Home | awk '{print $2}'` /home xfs defaults 0 0" >> /etc/fstab**
+[root@otus-task4 ~]# **echo "\`blkid | grep Home | awk '{print $2}'\` /home xfs defaults 0 0" >> /etc/fstab**
 ### /home - сделать том для снапшотов ###

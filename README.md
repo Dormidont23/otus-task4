@@ -128,16 +128,18 @@ WARNING: xfs signature detected on /dev/VolGroup00/LogVol00 at offset 0. Wipe it
   Logical volume "LogVol00" created.
 
 Проделываем на нем те же операции, что и в первый раз:\
-[root@otus-task4 ~]# **mkfs.xfs /dev/VolGroup00/LogVol00**\
-meta-data=/dev/VolGroup00/LogVol00 isize=512    agcount=4, agsize=524288 blks\
-         =                       sectsz=512   attr=2, projid32bit=1\
-         =                       crc=1        finobt=0, sparse=0\
-data     =                       bsize=4096   blocks=2097152, imaxpct=25\
-         =                       sunit=0      swidth=0 blks\
-naming   =version 2              bsize=4096   ascii-ci=0 ftype=1\
-log      =internal log           bsize=4096   blocks=2560, version=2\
-         =                       sectsz=512   sunit=0 blks, lazy-count=1\
-realtime =none                   extsz=4096   blocks=0, rtextents=0\
+[root@otus-task4 ~]# **mkfs.xfs /dev/VolGroup00/LogVol00**
+```
+meta-data=/dev/VolGroup00/LogVol00 isize=512    agcount=4, agsize=524288 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2097152, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+```
 [root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol00 /mnt**\
 [root@otus-task4 ~]# **xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt**\
 xfsdump: using file dump (drive_simple) strategy\
@@ -192,7 +194,7 @@ Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64\
 Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img\
 done\
 [root@otus-task4 boot]# **cd /boot ; for i in \`ls initramfs-\*img\`; do dracut -v $i \`echo $i|sed "s/initramfs-//g; s/.img//g"\` --force; done**\
-.&nmsp;.&nmsp;.\
+...\
 *** Installing kernel module dependencies and firmware ***\
 *** Installing kernel module dependencies and firmware done ***\
 *** Resolving executable dependencies ***\

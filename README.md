@@ -317,7 +317,6 @@ total 0
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file7
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file8
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file9
-drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```
 Снять снапшот:\
 [root@otus-task4 ~]# **lvcreate -L 100MB -s -n home_snap /dev/VolGroup00/LogVol_Home**\
@@ -341,7 +340,6 @@ total 0
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file7
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file8
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file9
-drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```
 Восстановление со снапшота:\
 [root@otus-task4 ~]# **umount /home/**\
@@ -374,5 +372,4 @@ total 0
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file7
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file8
 -rw-r--r--. 1 root    root     0 Dec 26 18:56 file9
-drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```

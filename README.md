@@ -267,3 +267,4 @@ Do you really want to remove active logical volume vg_root/lv_root? [y/n]: y\
   Labels on physical volume "/dev/sdb" successfully wiped.
 ### Выделить том под /home ###
 **lvcreate -n LogVol_Home -L 2G /dev/VolGroup00**
+### /home - сделать том для снапшотов ###

@@ -21,16 +21,18 @@
 &emsp;Logical volume "lv_root" created.
 
 Создать на нём файловую систему и смонтировать его, чтобы перенести туда данные:\
-[root@otus-task4 ~]# **mkfs.xfs /dev/vg_root/lv_root**\
-meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks\
-         =                       sectsz=512   attr=2, projid32bit=1\
-         =                       crc=1        finobt=0, sparse=0\
-data     =                       bsize=4096   blocks=2620416, imaxpct=25\
-         =                       sunit=0      swidth=0 blks\
-naming   =version 2              bsize=4096   ascii-ci=0 ftype=1\
-log      =internal log           bsize=4096   blocks=2560, version=2\
-         =                       sectsz=512   sunit=0 blks, lazy-count=1\
-realtime =none                   extsz=4096   blocks=0, rtextents=0\
+[root@otus-task4 ~]# **mkfs.xfs /dev/vg_root/lv_root**
+```
+meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2620416, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+```
 [root@otus-task4 ~]# **mount /dev/vg_root/lv_root /mnt**\
 Копировать все данные с / раздела в /mnt:\
 [root@otus-task4 ~]# **xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt**\

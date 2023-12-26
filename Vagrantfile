@@ -4,8 +4,6 @@ MACHINES = {
   :"otus-task4" => {
         :box_name => "centos/7",
         :box_version => "1804.02",
-#        :box_architecture => "amd64",
-#        :box_version => "4.3.6",
         :cpus => 2,
         :memory => 1024,
         :disks => {
@@ -39,7 +37,6 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder ".", "/vagrant", disabled: true
     config.vm.define boxname do |box|
       box.vm.box = boxconfig[:box_name]
-#      box.vm.box_architecture = boxconfig[:box_architecture]
       box.vm.box_version = boxconfig[:box_version]
       box.vm.host_name = boxname.to_s
       box.vm.provider "virtualbox" do |v|

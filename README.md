@@ -297,26 +297,26 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 [root@otus-task4 ~]# **ll /home/**
 ```
 total 0
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file1
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file10
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file11
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file12
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file13
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file14
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file15
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file16
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file17
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file18
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file19
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file2
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file20
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file3
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file4
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file5
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file6
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file7
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file8
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file9
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file1
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file10
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file11
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file12
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file13
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file14
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file15
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file16
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file17
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file18
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file19
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file2
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file20
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file3
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file4
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file5
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file6
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file7
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file8
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file9
 drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```
 Снять снапшот:\
@@ -331,16 +331,16 @@ drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 [root@otus-task4 ~]# **ll /home/**
 ```
 total 0
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file1
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file10
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file2
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file3
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file4
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file5
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file6
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file7
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file8
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file9
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file1
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file10
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file2
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file3
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file4
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file5
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file6
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file7
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file8
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file9
 drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```
 Восстановление со снапшота:\
@@ -354,25 +354,25 @@ drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 [root@otus-task4 ~]# **ll /home/**
 ```
 total 0
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file1
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file10
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file11
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file12
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file13
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file14
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file15
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file16
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file17
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file18
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file19
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file2
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file20
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file3
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file4
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file5
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file6
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file7
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file8
--rw-r--r--. 1 root    root     0 Dec  7 18:56 file9
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file1
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file10
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file11
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file12
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file13
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file14
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file15
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file16
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file17
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file18
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file19
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file2
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file20
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file3
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file4
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file5
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file6
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file7
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file8
+-rw-r--r--. 1 root    root     0 Dec 26 18:56 file9
 drwx------. 3 vagrant vagrant 74 May 12  2018 vagrant
 ```

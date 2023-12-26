@@ -268,7 +268,7 @@ Do you really want to remove active logical volume vg_root/lv_root? [y/n]: y\
 ### Выделить том под /home ###
 Выделяем том под /home аналогично тому, как делали для /var:\
 [root@otus-task4 ~]# **lvcreate -n LogVol_Home -L 2G /dev/VolGroup00**\
-  Logical volume "LogVol_Home" created.
+  Logical volume "LogVol_Home" created.\
 [root@otus-task4 ~]# **mkfs.xfs /dev/VolGroup00/LogVol_Home**
 ```
 meta-data=/dev/VolGroup00/LogVol_Home isize=512    agcount=4, agsize=131072 blks
@@ -281,10 +281,12 @@ log      =internal log           bsize=4096   blocks=2560, version=2
          =                       sectsz=512   sunit=0 blks, lazy-count=1
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 ```
-[root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol_Home /mnt/**
-[root@otus-task4 ~]# **cp -aR /home/\* /mnt/**
-[root@otus-task4 ~]# **rm -rf /home/\***
-[root@otus-task4 ~]# **umount /mnt**
+[root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol_Home /mnt/**\
+[root@otus-task4 ~]# **cp -aR /home/\* /mnt/**\
+[root@otus-task4 ~]# **rm -rf /home/\***\
+[root@otus-task4 ~]# **umount /mnt**\
 [root@otus-task4 ~]# **mount /dev/VolGroup00/LogVol_Home /home**
+
+Правим fstab для автоматического монтирования /home:\
 [root@otus-task4 ~]# **echo "`blkid | grep Home | awk '{print $2}'` /home xfs defaults 0 0" >> /etc/fstab**
 ### /home - сделать том для снапшотов ###

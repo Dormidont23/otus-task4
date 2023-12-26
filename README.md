@@ -247,14 +247,6 @@ Writing superblocks and filesystem accounting information: done
 
 [root@otus-task4 boot]# **mount /dev/vg_var/lv_var /mnt**\
 [root@otus-task4 boot]# **cp -aR /var/\* /mnt/**\
-[root@otus-task4 boot]# **rsync -avHPSAX /var/ /mnt/**\
-sending incremental file list\
-./\
-.updated\
-            163 100%    0.00kB/s    0:00:00 (xfr#1, ir-chk=1025/1027)\
-
-sent 143,116 bytes  received 609 bytes  287,450.00 bytes/sec\
-total size is 255,916,346  speedup is 1,780.60
 
 На всякий случай сохраняем содержимое старого var:\
 [root@otus-task4 boot]# **mkdir /tmp/oldvar && mv /var/\* /tmp/oldvar**\
